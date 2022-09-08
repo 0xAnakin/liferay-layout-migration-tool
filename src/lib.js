@@ -6,14 +6,12 @@ const XML_HEADER = `<?xml version="1.0"?>\n<!DOCTYPE layout-templates PUBLIC "-/
 const PROMPT_QUESTIONS = [{
         type: 'text',
         name: 'LAYOUTS_DIRECTORY',
-        message: 'Where are your tpl & png files located?',
-        initial: 'E:/Development/lab/javascript/liferay-layout-migration-tool/OTETV-layouttpl/src/main/webapp'
+        message: 'Where are your tpl & png files located?'
     },
     {
         type: 'text',
         name: 'LAYOUTS_XML',
-        message: 'Where is your liferay-layout-templates.xml located?',
-        initial: 'E:/Development/lab/javascript/liferay-layout-migration-tool/OTETV-layouttpl/src/main/webapp/WEB-INF'
+        message: 'Where is your liferay-layout-templates.xml located?'
     },
     {
         type: 'text',
