@@ -16,7 +16,7 @@ Utility for migrating liferay 6.2 layouts to 7.x.x
 
 ## Usage
 
-Navigate at the tools root directory and ente one of the following:
+Navigate to liferay-layout-migration-tool directory and enter one of the following:
 
 ```
     - node src/index.js
