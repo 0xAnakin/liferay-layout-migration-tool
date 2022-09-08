@@ -22,13 +22,3 @@ Navigate at the tools root directory and ente one of the following:
     - node src/index.js
     - npm run migrate
 ```
-
-Directory structure:
-
-```
-    |
-    |__liferay-layout-migration-tool
-    |__MYLAYOUT-layouttpl
-```
-
-`npm run migrate ../../MYLAYOUT-layouttpl ../../migrated /layouttpl/custom/MYLAYOUT-layouttpl`
