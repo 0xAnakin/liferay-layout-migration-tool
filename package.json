@@ -1,13 +1,20 @@
 {
   "name": "liferay-layout-migration-tool",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "migrate": "node src/index.js"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0xAnakin/liferay-layout-migration-tool.git"
+  },
+  "keywords": [
+    "liferay",
+    "layout"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
