@@ -16,13 +16,11 @@ Utility for migrating liferay 6.2 layouts to 7.x.x
 
 ## Usage
 
-```
-    - node src/index.js {LAYOUT_ROOT_DIR} {LAYOUT_DEST_DIR}
-    - npm run migrate {LAYOUT_ROOT_DIR} {LAYOUT_DEST_DIR} {LAYOUT_XML_PATH_PREFIX}
+Navigate at the tools root directory and ente one of the following:
 
-    {LAYOUT_ROOT_DIR}       - required
-    {LAYOUT_DEST_DIR}       - required
-    {LAYOUT_XML_PATH_PREFIX}  - optional
+```
+    - node src/index.js
+    - npm run migrate
 ```
 
 Directory structure:

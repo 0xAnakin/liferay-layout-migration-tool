@@ -1,0 +1,76 @@
+Velocity->FreeMarker conversion tool, v. 0.3
+(codename: U.S. Cavalry)
+
+The accompanying cavalry.jar is an executable jar file.
+You can launch it via:
+
+java -jar cavalry.jar <fromfile> <tofile>
+
+If the <tofile> is not specified, it will output to 
+stdout.
+
+CAVEATS:
+
+Certain constructs in Vel will translate to the 
+FreeMarker syntax, but are not valid. 
+
+#set (foo-bar = "foobar")
+
+will be translated to:
+
+<#assign foo-bar = "foobar">
+
+but this is actually illegal in FM, since foo-bar 
+is not a valid identifier in FM.
+
+In general, the tool generates FTL (FreeMarker Template language)
+code that is compatible with FreeMarker 2.1 and higher. 
+By contrast with the previous 2 versions of this tool, the FTL
+generated is so-called "strict syntax" where the directives
+start with a #. So, it generates:
+
+<#if x == y>....</#if>
+
+Note that this syntax only works in FreeMarker 2.1 and later.
+
+Note that certain interpolations are not handled, such as 
+putting velocimacros within double-quoted strings, i.e.
+
+"blah blah #mymacro(blah) blah blah"
+
+FreeMarker now has an "interpret" transform that allows the
+equivalent to this, but US Cavalry does not currently
+translate to that construct. You'd have to do it by
+hand. Maybe in a later version.
+
+Needless to say, this tool does not convert your 
+java source code over. You have to do that yourself. 
+You will almost certainly have some work ahead of you 
+to port your app. 
+
+However, note that there is an included utility class, 
+com.revusky.util.FreeMarker that exposes an API rather 
+similar to the  org.apache.velocity.Velocity.mergeTemplate() 
+routine. This is basically just a convenience to
+help you get going quickly. Note that this works against
+the FreeMarker 2.1 API. 
+
+The enclosed .jar file is actually a modified version
+of Velocity itself. It uses the same code to build
+the tree and I have added a custom dump method to the
+various nodes in the syntax tree, so that the tree can 
+be dumped out in FreeMarker syntax. That's how it works. 
+Note that I am also including the source of the launching
+class (com.revusky.util.USCavalry) so that you can 
+customize it.
+
+This tool is not perfect, but is certainly good 
+enough to be very useful. Please send feedback to 
+freemarker-devel@lists.sourceforge.net
+
+Jonathan Revusky
+Sitges, Spain
+25 January 2003
+
+NOTE: This product includes software developed by the
+Apache Software Foundation (http://www.apache.org/).
