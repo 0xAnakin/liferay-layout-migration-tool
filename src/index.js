@@ -30,7 +30,7 @@ Version: ${pkg.version}
 
     const USER_INPUT = await prompts(lib.PROMPT_QUESTIONS);
 
-    console.debug(USER_INPUT);
+    // console.debug(USER_INPUT);
 
     const {
         LAYOUTS_DIRECTORY,
@@ -144,6 +144,9 @@ Version: ${pkg.version}
                 let migrated_template_source = original_template_source.replace(new RegExp('col-xs-', 'g'), 'col-');
 
                 const $ = cheerio.load(migrated_template_source);
+                
+                const $head_scripts = $('head script');
+                const $head_styles = $('head style');
 
                 $('.row-fluid').removeClass('row-fluid').addClass('row');
                 $('.pull-left').removeClass('pull-left').addClass('float-left');
@@ -185,6 +188,26 @@ Version: ${pkg.version}
                     migrated_template_source = stdout;
 
                 }
+
+                if ($head_scripts.length) {
+                    
+                    const $temp_wrapper = $('<div></div>')
+
+                    $temp_wrapper.append($head_scripts.clone());
+
+                    migrated_template_source = `${$temp_wrapper.html().trim()}\n${migrated_template_source}`;
+
+                }    
+
+                if ($head_styles.length) {
+                    
+                    const $temp_wrapper = $('<div></div>')
+
+                    $temp_wrapper.append($head_styles.clone());
+
+                    migrated_template_source = `${$temp_wrapper.html().trim()}\n${migrated_template_source}`;
+
+                }                
 
                 fs.writeFileSync(path.join(LAYOUTS_DEST_DIR, LAYOUTS_XML_PATH_PREFIX, ftl_file), migrated_template_source, {
                     encoding: 'utf8'
